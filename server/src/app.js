@@ -8,9 +8,17 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/status', (req, res) => {
+let myUser = 'was not set'
+
+app.post('/register', (req, res) => {
   res.send({
-    message: 'hello!'
+    message: 'Dear ' + req.body.email + ', your user was registered'
+  })
+})
+
+app.get('/myUser', (req, res) => {
+  res.send({
+    message: 'Your user name is: ' + myUser
   })
 })
 

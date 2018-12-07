@@ -6,11 +6,12 @@
   <br>
   <input type="password" name="password" placeholder="password" v-model="password">
   <br>
-  <input type="submit" name="submit" value="Log in" @click="register">
+  <input type="submit" name="submit" value="Register" @click="register">
 </div>
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data () {
     return {
@@ -19,8 +20,11 @@ export default {
     }
   },
   methods: {
-    register () {
-      console.log('Register button was clicked')
+    async register () {
+      await AuthenticationService.register({
+        email: this.email,
+        password: this.password
+      })
     }
   }
 }

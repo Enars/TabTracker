@@ -2,7 +2,7 @@
 <div>
   <h1>Register</h1>
 
-  <input type="email" name="email" placeholder="email" v-model="email">
+  <input type="text" name="email" placeholder="email" v-model="email">
   <br>
   <input type="password" name="password" placeholder="password" v-model="password">
   <br>

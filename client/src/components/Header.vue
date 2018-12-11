@@ -1,0 +1,28 @@
+<template>
+  <v-toolbar fixed class="amber lighten-1">
+    <v-toolbar-title>
+      <v-btn flat router to="root">
+        TabTracker
+      </v-btn>
+    </v-toolbar-title>
+    <v-toolbar-items>
+      <v-btn flat>BROWSE</v-btn>
+    </v-toolbar-items>
+    <v-spacer></v-spacer>
+    <v-toolbar-items>
+      <v-btn flat router to="register">
+        Sign Up
+      </v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>

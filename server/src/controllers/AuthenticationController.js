@@ -12,5 +12,36 @@ module.exports = {
         error: 'Email is already registered'
       })
     }
+  },
+  async login (req, res) {
+    try {
+      const { email, password } = req.body
+      const user = await User.findOne({
+        where: {
+          email: email
+        }
+      })
+      console.log('testing')
+      console.log('user', user.email)
+      if (!user) {
+        res.status(403).send({
+          error: 'The login information was incorrect'
+        })
+      }
+      const passwordIsValid = password === user.password
+      if (!passwordIsValid) {
+        res.status(403).send({
+          error: 'Incorrect password'
+        })
+      }
+      const userJson = user.toJSON()
+      res.send({
+        user: userJson
+      })
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error has occurred'
+      })
+    }
   }
 }

@@ -10,6 +10,9 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
+      <v-btn flat router to="login">
+        Login
+      </v-btn>
       <v-btn flat router to="register">
         Sign Up
       </v-btn>

@@ -1,4 +1,13 @@
 const { User } = require('../models')
+const jwt = require('jsonwebtoken')
+const config = require('../config/config')
+
+function jwtSignUser (user) {
+  const ONE_WEEK = 60 * 60 * 24 * 7
+  return jwt.sign(user, config.authentication.jwtSecret, {
+    expiresIn: ONE_WEEK
+  })
+}
 
 module.exports = {
   // Only caring about the callback
@@ -21,14 +30,12 @@ module.exports = {
           email: email
         }
       })
-      console.log('testing')
-      console.log('user', user.email)
       if (!user) {
         res.status(403).send({
           error: 'The login information was incorrect'
         })
       }
-      const passwordIsValid = password === user.password
+      const passwordIsValid = user.comparePassword(password)
       if (!passwordIsValid) {
         res.status(403).send({
           error: 'Incorrect password'
@@ -36,7 +43,8 @@ module.exports = {
       }
       const userJson = user.toJSON()
       res.send({
-        user: userJson
+        user: userJson,
+        token: jwtSignUser(userJson)
       })
     } catch (err) {
       res.status(500).send({

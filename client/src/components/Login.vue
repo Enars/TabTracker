@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-layout row>
-      <v-flex xs6 offset-xs3>
+      <v-flex xs4 offset-xs4>
         <div class="white elevation-2">
           <v-toolbar flat dense class="amber lighten-1">
             <v-toolbar-title>Login</v-toolbar-title>

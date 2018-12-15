@@ -19,7 +19,7 @@ app.use(cors())
 }) */
 
 require('./routes')(app)
-
+// Force clear by: {force: true} in sync
 sequelize.sync()
   .then(() => {
     app.listen(config.port)

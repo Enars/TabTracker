@@ -9,12 +9,14 @@
           <div class="pl-4 pr-4 pt-2 pb-2">
             <v-text-field
               v-model="email"
+              autocomplete="off"
               label="Email">
             </v-text-field>
             <v-text-field
               v-model="password"
               :type="'password'"
               label="Password"
+              autocomplete="new-password"
             ></v-text-field>
             <br>
             <div class="error" v-html="error"></div>
@@ -40,10 +42,12 @@ export default {
   methods: {
     async register () {
       try {
-        await AuthenticationService.register({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }

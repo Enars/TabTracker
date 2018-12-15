@@ -9,10 +9,12 @@
       <v-btn flat>BROWSE</v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
-    <v-toolbar-items>
+    <v-toolbar-items
+    v-if="!$store.state.isUserLoggedIn">
       <v-btn flat router to="login">
         Login
       </v-btn>
+
       <v-btn flat router to="register">
         Sign Up
       </v-btn>

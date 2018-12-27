@@ -18,8 +18,14 @@
               label="Password"
               autocomplete="new-password"
             ></v-text-field>
-            <br>
-            <div class="error" v-html="error"></div>
+            <!--<div class="error" v-html="error"></div> -->
+            <v-alert
+              v-if="error"
+              v-html="error"
+              :value="true"
+              color="error"
+              outline
+            ></v-alert>
             <br>
             <v-btn @click="register">Register</v-btn>
           </div>

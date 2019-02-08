@@ -6,7 +6,9 @@
       </v-btn>
     </v-toolbar-title>
     <v-toolbar-items>
-      <v-btn flat>BROWSE</v-btn>
+      <v-btn flat router to="songs">
+        BROWSE
+      </v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items v-if="!$store.state.isUserLoggedIn">
